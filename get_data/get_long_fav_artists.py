@@ -2,9 +2,9 @@ import spotipy
 
 
 def get_long_fav_artists(token):
-
+    print(token)
     sp = spotipy.Spotify(auth=token)
-
+    print(sp.current_user())
     # get top 60 artists from 'long_term' time frame
     artists_0_19 = sp.current_user_top_artists(limit=20, offset=0, time_range='long_term')
     artists_20_39 = sp.current_user_top_artists(limit=20, offset=20, time_range='long_term')

@@ -3,6 +3,7 @@ import spotipy
 
 def get_med_fav_artists(token):
 
+    
     sp = spotipy.Spotify(auth=token)
 
     # get top 60 artists from 'medium_term' time frame

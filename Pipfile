@@ -13,6 +13,8 @@ jupyter = "*"
 pymongo = "==3.4.0"
 spotipy = "*"
 ordered-set = "*"
+flask-pymongo = "*"
+flask = "*"
 
 [requires]
 python_version = "3.7"
