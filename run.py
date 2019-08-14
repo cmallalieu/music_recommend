@@ -9,24 +9,24 @@ from data_processing.get_similarity import get_similarity_rating
 # ic2uyujb93pc2hj6hpfibmnkp
 # 1224546500
 
-# def run(username):
+def run(username):
     # get auth token for username
-token = get_auth_token(username='1224546500')
+    token = get_auth_token(username='ic2uyujb93pc2hj6hpfibmnkp')
 
-    # get artist from all time frames
-if token:
-    top_artists = {
-                    'long' : get_long_fav_artists(token),  
-                    'medium' : get_med_fav_artists(token), 
-                    'short' : get_short_fav_artists(token)
-                }
-else:
-    print('Error, cannot get authorization token')
+        # get artist from all time frames
+    if token:
+        top_artists = {
+                        'long' : get_long_fav_artists(token),  
+                        'medium' : get_med_fav_artists(token), 
+                        'short' : get_short_fav_artists(token)
+                    }
+    else:
+        print('Error, cannot get authorization token')
 
-import pandas as pd
+    import pandas as pd
 
-ratings_df = get_ratings_df(top_artists)
-    
-    # similarity = get_similarity_rating(ratings_df)
-print (ratings_df)
-   # return ratings_df.to_json(orient='records')
+    ratings_df_sorted = get_ratings_df(top_artists).sort_values(by='rating', ascending=False)
+    print(ratings_df_sorted)
+    return ratings_df_sorted.to_json(orient='columns')
+#     # similarity = get_similarity_rating(ratings_df)
+# print (ratings_df)

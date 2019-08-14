@@ -25,19 +25,15 @@ import "./assets/css/animate.min.css";
 import "./assets/sass/light-bootstrap-dashboard-react.scss?v=1.3.0";
 import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
-import { SpotifyApiContext } from 'react-spotify-api';
 
 import AdminLayout from "layouts/User.jsx";
 
 ReactDOM.render(
-  <SpotifyApiContext.Provider value={token}>
       <BrowserRouter>
     <Switch>
       <Route path="/user" render={props => <AdminLayout {...props} />} />
       <Redirect from="/" to="/user/login" />
-    </Switch>
-  </BrowserRouter>
-  
-  </SpotifyApiContext.Provider>,
-    document.getElementById("root")
+    </Switch>  
+  </BrowserRouter>,
+  document.getElementById("root")
 );

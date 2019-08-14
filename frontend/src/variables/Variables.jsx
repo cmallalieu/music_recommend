@@ -266,7 +266,7 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["Name", "username", "Date Added"];
+const thArray = ["username", "email", "similarity score"];
 const tdArray = [
   ["André 3000", "outkast1", "03/11/19"],
   ["Chance the Rapper", "chance3", "03/11/19"],
@@ -487,21 +487,6 @@ const iconsArray = [
   "pe-7s-airplay"
 ];
 
-//
-// //
-// // // // For dashboard's charts
-// //
-//
-// Data for Pie Chart
-var dataPie = {
-  labels: ["40%", "20%", "40%"],
-  series: [40, 20, 40]
-};
-var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe"],
-  types: ["info", "danger", "warning"]
-};
-
 // Data for Line Chart
 var dataSales = {
   labels: [
@@ -555,19 +540,29 @@ var legendSales = {
 
 // Data for Bar Chart
 var dataBar = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mai",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
+  labels: 
+  [
+    'Led Zeppelin',                                                                                             
+    'Jimi Hendrix',                                                                                             
+    'Flume',                                                                                            
+    'Bon Iver',                                                                                             
+    'Kendrick Lamar',                                                                                             
+    'Vampire Weekend',                                                                                             
+    'The Strokes',                                                                                             
+    'Chance the Rapper',                                                                                            
+    'Petit Biscuit',                                                                                             
+    'NoMBe',                                                                                             
+    'Tame Impala',                                                                                             
+    'ODESZA',                                                                                             
+    'The Rolling Stones',                                                                                             
+    'Drake',                                                                                             
+    'RÜFÜS DU SOL',                                                                                             
+    'San Holo',                                                                                             
+    'Kanye West',                                                                                             
+    'J. Cole',                                                                                            
+    'Pink Floyd',                                                                                             
+    'Mac Miller',                                                                                             
+    'MGMT'
   ],
   series: [
     [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
@@ -575,11 +570,11 @@ var dataBar = {
   ]
 };
 var optionsBar = {
-  seriesBarDistance: 10,
+  seriesBarDistance: 5,
   axisX: {
     showGrid: false
   },
-  height: "245px"
+  height: "250px"
 };
 var responsiveBar = [
   [
@@ -595,7 +590,8 @@ var responsiveBar = [
   ]
 ];
 var legendBar = {
-  names: ["Tesla Model S", "BMW 5 Series"],
+  names: [                                                                                               
+  ],
   types: ["info", "danger"]
 };
 
@@ -604,8 +600,8 @@ module.exports = {
   thArray,
   tdArray, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
-  dataPie,
-  legendPie,
+  //dataPie,
+  //legendPie,
   dataSales,
   optionsSales,
   responsiveSales,

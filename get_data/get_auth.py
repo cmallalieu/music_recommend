@@ -13,7 +13,6 @@ def get_auth_token(username, scope='user-top-read', redirect_uri='http://127.0.0
 
     # get token
     try:
-        print(username)
         token = util.prompt_for_user_token(username,scope,client_id=client_id,client_secret=client_secret,redirect_uri=redirect_uri)
         return token
     except:

@@ -18,28 +18,29 @@
 import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
 import FriendsList from "views/FriendsList.jsx";
-import Messages from "views/Messages.jsx";
 import Login from "views/Login.jsx"
 import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
+import ChartsPage from "views/chart.jsx";
 
 const dashboardRoutes = [
+
   {
     path: "/dashboard",
     name: "Dashboard",
     icon: "pe-7s-graph",
-    component: Dashboard,
+    component: ChartsPage,
     layout: "/user"
   },
-  {
-    path: "/messages",
-    name: "Messages",
-    icon: "pe-7s-mail",
-    component: Messages,
-    layout: "/user"
-  },
+  // {
+  //   path: "/suggestedFriends",
+  //   name: "Suggested Friends",
+  //   icon: "pe-7s-mail",
+  //   component: SuggestedFriends,
+  //   layout: "/user"
+  // },
   {
     path: "/user",
     name: "User Profile",
@@ -60,8 +61,7 @@ const dashboardRoutes = [
     icon: "pe-7s-unlock",
     component: Login,
     layout: "/user"
-  },
-
+  }
 
   // {
   //   path: "/icons",
