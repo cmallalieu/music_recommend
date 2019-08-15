@@ -2,20 +2,20 @@ import numpy as np
 import pandas as pd
 from data_processing.get_rating_predictions import get_rating_predictions
 
-def get_similarity_rating(ratings_df):
-    
-    # get number of rows
-    half_rows = ratings_df['artistName'].count() / 2
+def get_similarity_rating(json_1, json_2):
 
-    # split into 2 dfs
-    df1, df2 = np.split(ratings_df, [int(half_rows)], axis=0)
+    # convert users json into dataframes
+    df1 = pd.read_json(orient='columns')
+    df2 = pd.read_json(orient='columns')
 
-    # create dataframe with combined unique artists and frequencies with NaN values filled with 0
-    test = pd.merge(df1, df2, on="artistName", how="outer")
+    # create dataframe with combined unique artists and frequencies
+    unique_merged = pd.merge(df1, df2, on="artistName", how="outer")
 
     # Construct full dataset and convert catagorical artistName and artistId to numerical ids
-    df_x = pd.DataFrame.from_dict({ 'userId' : [0 for i in range(test['artistName'].size)], 'artistId' : [i for i in range(test['artistName'].size)], 'rating' : test['rating_x']})
-    df_y = pd.DataFrame.from_dict({ 'userId' : [1 for i in range(test['artistName'].size)], 'artistId' : [i for i in range(test['artistName'].size)], 'rating' : test['rating_y']})
+    df_x = pd.DataFrame.from_dict({ 'userId' : [0 for i in range(unique_merged['artistName'].size)],
+            'artistId' : [i for i in range(unique_merged['artistName'].size)], 'rating' : unique_merged['rating_x']})
+    df_y = pd.DataFrame.from_dict({ 'userId' : [1 for i in range(unique_merged['artistName'].size)],
+            'artistId' : [i for i in range(unique_merged['artistName'].size)], 'rating' : unique_merged['rating_y']})
     dataset = pd.DataFrame.append(df_x, df_y)
 
     # seperate dataset into dataframe with only NaN and no NaN

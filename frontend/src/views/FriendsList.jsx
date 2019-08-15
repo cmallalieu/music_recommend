@@ -22,6 +22,40 @@ import Card from "components/Card/Card.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
 
 class FriendsList extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = { 
+        similarity : 0
+    };
+  }
+
+  componentWillMount() {
+    
+    const username = sessionStorage.getItem('username')
+    const fetchUrl = "http://127.0.0.1:5000/api/get_user_profile/" + username
+
+    fetch(fetchUrl, {mode: 'cors'})
+    .then((response) => response.json())
+    .then((findresponse)=> {
+      const name = findresponse['display_name']
+      const spotify = findresponse['external_urls']['spotify']
+      const username = findresponse['id']
+
+      const info = {
+        username : username,
+        name : name,
+        email : 'cpm220@lehigh.edu',
+        spotify : spotify
+      }
+
+      this.setState(
+        info
+      )
+    })
+  }
+
+
   render() {
     return (
       <div className="content">

@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component } from "react";
+import React from "react";
 import {
   Grid,
   Row,
@@ -26,22 +26,54 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 
-import avatar from "assets/img/headshot.jpg";
-
 class UserProfile extends React.Component {
 
   constructor(props){
     super(props);
     this.state = { 
-        username : 'cmallalieu',
-        firstName : 'Chris',
-        lastName : 'Mallalieu',
-        email : 'cpm220@lehigh.edu',
+        username : '',
+        name : '',
+        email : '',
+        spotify : '',
+        image : ''
     };
+  }
+
+  componentWillMount() {
+    
+    const username = sessionStorage.getItem('username')
+    const fetchUrl = "http://127.0.0.1:5000/api/get_user_profile/" + username
+
+    fetch(fetchUrl, {mode: 'cors'})
+    .then((response) => response.json())
+    .then((findresponse)=> {
+      const name = findresponse['display_name']
+      const spotify = findresponse['external_urls']['spotify']
+      const username = findresponse['id']
+      const image = findresponse['images']['0']['url']
+
+      const info = {
+        username : username,
+        name : name,
+        email : 'cpm220@lehigh.edu',
+        spotify : spotify,
+        image : image
+      }
+
+      this.setState(
+        info
+      )
+    })
   }
 
 
   render() {
+    
+    const username = this.state.username
+    const name = this.state.name
+    const spotify = this.state.spotify
+    const email = this.state.email
+
     return (
       <div className="content">
         <Grid fluid>
@@ -53,20 +85,21 @@ class UserProfile extends React.Component {
                   <form>
                     <FormInputs
                       ncols={["col-md-6", "col-md-6"]}
+                    
                       properties={[
                         {
                           label: "Username",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Username",
-                          defaultValue: "cmallalieu"
+                          defaultValue: username
                         },
                         {
                           label: "Email address",
                           type: "email",
                           bsClass: "form-control",
                           placeholder: "Email",
-                          defaultValue: "cpm220@lehigh.edu"
+                          defaultValue: email
                         }
                       ]}
                     />
@@ -77,16 +110,16 @@ class UserProfile extends React.Component {
                           label: "First name",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "First name",
-                          defaultValue: "Chris"
+                          placeholder: "Name",
+                          defaultValue: name
                         },
                         {
-                          label: "Last name",
+                          label: "Spotify URL",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Last name",
-                          defaultValue: "Mallalieu"
-                        }
+                          placeholder: "Spotify URL",
+                          defaultValue: spotify
+                        },
                       ]}
                     />
                   </form>
@@ -96,14 +129,11 @@ class UserProfile extends React.Component {
             <Col md={4}>
               <UserCard
                 bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-                avatar={avatar}
-                name="Chris Mallalieu"
-                userName="cmallalieu"
-                description={
-                  <span>
-                    "I listen to a lot of music"
-                  </span>
-                }
+                avatar={this.state.image}
+                name= {this.state.name}
+                userName={this.state.username}
+                // description={
+                // }
               />
             </Col>
           </Row>

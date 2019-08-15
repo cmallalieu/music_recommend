@@ -268,12 +268,10 @@ var style = {
 //
 const thArray = ["username", "email", "similarity score"];
 const tdArray = [
-  ["André 3000", "outkast1", "03/11/19"],
-  ["Chance the Rapper", "chance3", "03/11/19"],
-  ["Eminem", "slim_shady", "03/10/19"],
-  ["Kanye West", "ye01", "03/00/19"],
-  ["J. Cole", "jermaine11", "02/25/19"],
-  ["Kendrick Lamar", "K.", "02/22/19"]
+  ["ejbgreen", "ejbgreen@gmail.com", "0.730"],
+  ["1224546500", "emallalieu@gmail.com", "0.536"],
+  ["ferris124", "jferris124@yahoo.com", "0.409"],
+  ["c_j_madison", "c_j_madison@gmail.com", "0.228"]
 ];
 
 //

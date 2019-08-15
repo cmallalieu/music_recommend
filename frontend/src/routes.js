@@ -15,14 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
 import FriendsList from "views/FriendsList.jsx";
 import Login from "views/Login.jsx"
-import Icons from "views/Icons.jsx";
-import Maps from "views/Maps.jsx";
-import Notifications from "views/Notifications.jsx";
-import Upgrade from "views/Upgrade.jsx";
 import ChartsPage from "views/chart.jsx";
 
 const dashboardRoutes = [
@@ -34,25 +29,18 @@ const dashboardRoutes = [
     component: ChartsPage,
     layout: "/user"
   },
-  // {
-  //   path: "/suggestedFriends",
-  //   name: "Suggested Friends",
-  //   icon: "pe-7s-mail",
-  //   component: SuggestedFriends,
-  //   layout: "/user"
-  // },
+  {
+    path: "/suggestedFriends",
+    name: "Suggested Friends",
+    icon: "pe-7s-note2",
+    component: FriendsList,
+    layout: "/user"
+  },
   {
     path: "/user",
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/user"
-  },
-  {
-    path: "/friendsList",
-    name: "Friends List",
-    icon: "pe-7s-note2",
-    component: FriendsList,
     layout: "/user"
   },
   {
@@ -62,28 +50,6 @@ const dashboardRoutes = [
     component: Login,
     layout: "/user"
   }
-
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: "pe-7s-science",
-  //   component: Icons,
-  //   layout: "/user"
-  // },
-  // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "pe-7s-map-marker",
-  //   component: Maps,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "pe-7s-bell",
-  //   component: Notifications,
-  //   layout: "/admin"
-  // },
 ];
 
 export default dashboardRoutes;
