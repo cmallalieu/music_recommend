@@ -42,7 +42,7 @@ class UserProfile extends React.Component {
   componentWillMount() {
     
     const username = sessionStorage.getItem('username')
-    const fetchUrl = "http://127.0.0.1:5000/api/get_user_profile/" + username
+    const fetchUrl = "http://165.22.188.156:8080/api/get_user_profile/" + username
 
     fetch(fetchUrl, {mode: 'cors'})
     .then((response) => response.json())

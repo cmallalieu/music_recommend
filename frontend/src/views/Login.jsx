@@ -28,8 +28,6 @@ class Login extends React.Component {
             info
         )
 
-        console.log(username)
-
         const fetchUrl =  'http://165.22.188.156:8080/api/get_chart_data/' + username
         
         fetch(fetchUrl, {mode: 'cors'})
