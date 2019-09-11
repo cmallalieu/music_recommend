@@ -12,7 +12,7 @@ from data_processing.get_similarity import get_similarity_rating
 def run_get_ratings(username):
     # get auth token for username
     token = get_auth_token(username=username)
-
+    
     # get artist from all time frames
     if token:
         top_artists = {
